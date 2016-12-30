@@ -1,17 +1,19 @@
 $(document).ready(function () {
-    var options = document.querySelectorAll('.select select option')
+    
+    //    Actions for each select BEGIN
+    function dropdown(selectName) {
+        var options = document.querySelectorAll('.select' + selectName + ' select option')
         , value = 0
         , i;
-    //    Actions for each select BEGIN
-    $('.select').each(function () {
+    $(selectName).each(function () {
         $(this).append('<ul class="dropdown"></ul>');
         for (i = 1; i < options.length; i++) {
             $(options[i]).hide();
-            $('<li data-item="' + i + '"></li>').text(options[i].innerHTML).appendTo('.select .dropdown');
+            $('<li data-item="' + i + '"></li>').text(options[i].innerHTML).appendTo('' + selectName + ' .dropdown');
         }
-        $('.select .dropdown').addClass('hidden');
+        $(selectName + ' .dropdown').addClass('hidden');
         //  Placeholder BEGIN
-        $('.select select').change(function () {
+        $(selectName + ' select').change(function () {
             if ($(this).val() == "0") {
                 $(this).addClass("empty");
             }
@@ -19,7 +21,7 @@ $(document).ready(function () {
                 $(this).removeClass("empty");
             }
         });
-        $('.select select').change();
+        $(selectName + ' select').change();
         //  Placeholder END
     });
     //    Actions for each select END
@@ -27,19 +29,24 @@ $(document).ready(function () {
     // Clickers BEGIN
     $(document).on('click', function (e) {
         var target = $(e.target);
-        if (!$(target).is('.select select')) {
-            $('.select .dropdown').addClass('hidden');
+        if (!$(target).is(selectName + ' select')) {
+            $(selectName + ' .dropdown').addClass('hidden');
         }
     });
-    $('.select select').click(function () {
-        $('.select .dropdown').toggleClass('hidden');
+    $(selectName + ' select').click(function () {
+        $(selectName + ' .dropdown').toggleClass('hidden');
     });
-    $('.dropdown li').click(function () {
+    $(selectName + ' .dropdown li').click(function (e) {
         $(this).addClass('active').siblings().removeClass('active');
         value = $(this).attr('data-item');
-        $('.select select').find('option[value="' + value + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
-        $('.select .dropdown').toggleClass('hidden');
+        $(selectName + ' select').find('option[value="' + value + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
+        $(selectName + ' .dropdown').toggleClass('hidden');
+        
     });
         // Clickers END
+    }
     
+    // Calling functions
+    dropdown('.first-select');
+    dropdown('.second-select');
 });
