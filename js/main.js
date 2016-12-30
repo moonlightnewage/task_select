@@ -36,12 +36,11 @@ $(document).ready(function () {
     $(selectName + ' select').click(function () {
         $(selectName + ' .dropdown').toggleClass('hidden');
     });
-    $(selectName + ' .dropdown li').click(function (e) {
+    $(selectName + ' .dropdown li').click(function() {
         $(this).addClass('active').siblings().removeClass('active');
         value = $(this).attr('data-item');
         $(selectName + ' select').find('option[value="' + value + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
         $(selectName + ' .dropdown').toggleClass('hidden');
-        
     });
         // Clickers END
     }

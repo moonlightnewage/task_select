@@ -55,6 +55,7 @@
     background-image: url('../icons/arrow.png');
     background-repeat: no-repeat;
     background-position: 95% 50%;
+    cursor: pointer;
 }
 
 .select select:after {
@@ -91,6 +92,7 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 15px;
     padding: 15px 20px;
+    cursor: pointer;
 }
 
 .dropdown li:hover {
