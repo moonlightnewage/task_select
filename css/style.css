@@ -16,7 +16,7 @@
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 
@@ -26,8 +26,17 @@
 /*Select styles BEGIN*/
 
 .select {
+    width: 40%;
+    margin: 20px;
+    float: left;
+    position: relative;
     display: block;
-    width: 500px;
+}
+
+.form:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .select select {
@@ -66,11 +75,15 @@
     border: 1px solid #e2e2e2;
     margin-top: 5px;
     padding: 0;
+    width: 100%;
     height: 200px;
     overflow: auto;
+    background: #fff; 
     box-shadow: 10px 5px 5px 0px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 9999;
 }
 
 .dropdown li {
